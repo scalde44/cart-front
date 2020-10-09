@@ -1,0 +1,34 @@
+<div class="container">
+    <br>
+    <br>
+    <h1>{{titulo}}</h1>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ProId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Enable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products | paginate: {itemsPerPage: 5, currentPage: pageActual}">
+                    <td>{{product.proId}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.detail}}</td>
+                    <td>{{product.price | currency:'':'symbol':'4.0'}}</td>
+                    <td>
+                        <img [src]="product.image" fallimg="default" class="img-thumb" width="35" height="45">
+                    </td>
+                    <td>{{product.enable}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls (pageChange)="pageActual=$event"></pagination-controls>
+
+</div>

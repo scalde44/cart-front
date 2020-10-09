@@ -1,0 +1,26 @@
+<div class="container">
+    <br>
+    <br>
+    <h1>{{titulo}}</h1>
+    <hr>
+    <div class="table-responsive">
+        <table class="table container center">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">PayId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Enable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let paymentMethod of paymentMethods | paginate: {itemsPerPage: 7, currentPage: pageActual}">
+                    <td>{{paymentMethod.payId}}</td>
+                    <td>{{paymentMethod.name}}</td>
+                    <td>{{paymentMethod.enable}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls (pageChange)="pageActual=$event"></pagination-controls>
+
+</div>
