@@ -1,0 +1,15 @@
+.navbar-nav>li>.dropdown-menu {
+    background-color: #343a40;
+}
+
+.navbar-nav>li>.dropdown-menu a {
+    color: white;
+}
+
+.navbar-nav>li>.dropdown-menu a:hover {
+    color: #000;
+}
+
+.navbar-nav>li>.dropdown-menu a:active {
+    color: #fff;
+}

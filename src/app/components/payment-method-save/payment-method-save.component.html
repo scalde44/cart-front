@@ -1,0 +1,29 @@
+<div class="container">
+    <br>
+    <br>
+    <h1>Guardar Método de pago</h1>
+    <hr>
+    <div *ngIf="showMsg">
+        <p *ngFor="let msg of messages">
+            {{msg}}
+        </p>
+    </div>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" #name placeholder="name" [(ngModel)]="paymentMethodOpt.name" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="enable">Enable</label>
+                <select name="enable" id="enable" #enable [(ngModel)]="paymentMethodOpt.enable" class="form-control">
+                    <option *ngFor="let enable of enables" [value]="enable.id">
+                        {{enable.name}}
+                    </option>
+                 </select>
+            </div>
+        </div>
+        <button (click)="save()" class="btn btn-primary md-10">Save</button>
+        <button routerLink="/paymentMethod-list" class="btn btn-secondary">Cancel</button>
+    </form>
+</div>

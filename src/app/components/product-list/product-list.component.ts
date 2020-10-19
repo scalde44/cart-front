@@ -11,8 +11,8 @@ export class ProductListComponent implements OnInit {
 
   public titulo: string = 'Lista de productos';
   public products: Product[];
-  pageActual:number=1;
-  constructor(public productService:ProductService) { }
+  pageActual: number = 1;
+  constructor(public productService: ProductService) { }
 
   ngOnInit(): void {
     this.findAll();

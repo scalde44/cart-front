@@ -11,9 +11,9 @@ export class PaymentMethodListComponent implements OnInit {
 
   public titulo: string = 'Lista de metodos de pago';
   public paymentMethods: PaymentMethod[];
-  pageActual:number=1;
+  pageActual: number = 1;
 
-  constructor(public paymentMethodService:PaymentMehtodService) { }
+  constructor(public paymentMethodService: PaymentMehtodService) { }
 
   ngOnInit(): void {
     this.findAll();

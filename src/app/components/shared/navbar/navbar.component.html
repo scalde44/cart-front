@@ -6,14 +6,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item mx-0 mx-lg-1" role="presentation" routerLinkActive="active">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="customer-list">Customer</a>
+                <li class="nav-item dropdown mx-0 mx-lg-1" role="presentation" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Customer
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="customer-list" routerLinkActive="bg-secondary">Customer List</a>
+                        <a class="dropdown-item" routerLink="customer-save" routerLinkActive="bg-secondary">Customer Save</a>
+                    </div>
                 </li>
-                <li class="nav-item mx-0 mx-lg-1" role="presentation" routerLinkActive="active">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="product-list">Product</a>
+                <li class="nav-item dropdown mx-0 mx-lg-1" role="presentation" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Product
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="product-list" routerLinkActive="bg-secondary">Product List</a>
+                        <a class="dropdown-item" routerLink="product-save" routerLinkActive="bg-secondary">Product Save</a>
+                    </div>
                 </li>
-                <li class="nav-item mx-0 mx-lg-1" role="presentation" routerLinkActive="active">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLink="paymentMethod-list">Payment Method</a>
+                <li class="nav-item dropdown mx-0 mx-lg-1" role="presentation" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Payment Method
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="paymentMethod-list" routerLinkActive="bg-secondary">Payment Method List</a>
+                        <a class="dropdown-item" routerLink="paymentMethod-save" routerLinkActive="bg-secondary">Payment Method Save</a>
+                    </div>
                 </li>
             </ul>
         </div>

@@ -11,7 +11,7 @@ export class CustomerListComponent implements OnInit {
 
   public titulo: string = 'Lista de clientes';
   public customers: Customer[];
-  pageActual:number=1;
+  pageActual: number = 1;
   constructor(public customerService: CustomerService) { }
 
   ngOnInit(): void {

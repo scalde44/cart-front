@@ -4,7 +4,7 @@
     <h1>{{titulo}}</h1>
     <hr>
     <div class="table-responsive">
-        <table class="table container center">
+        <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Email</th>
@@ -12,6 +12,8 @@
                     <th scope="col">Name</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Enable</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +23,12 @@
                     <td>{{customer.name}}</td>
                     <td>{{customer.phone}}</td>
                     <td>{{customer.enable}}</td>
+                    <td>
+                        <a [routerLink]="['/customer-edit',customer.email]"><i class="far fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <i class="fas fa-trash-alt" style="color:red"></i>
+                    </td>
                 </tr>
             </tbody>
         </table>
