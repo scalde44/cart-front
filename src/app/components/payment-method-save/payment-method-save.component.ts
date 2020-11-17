@@ -32,7 +32,7 @@ export class PaymentMethodSaveComponent implements OnInit {
     this.paymentMethodService.save(this.paymentMethodOpt).subscribe(
       ok => {
         this.showMsg = true;
-        this.messages[0] = "El paymentMethod se guardo correctamente";
+        this.messages[0] = "El paymentMethod con id "+ ok.payId+" se guardo correctamente";
         this.paymentMethodOpt = new PaymentMethodOpt("Y", "");
       },
       err => {

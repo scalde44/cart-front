@@ -1,0 +1,27 @@
+<div class="container">
+    <br>
+    <br>
+    <h1 style="text-align: center;">Productos</h1>
+    <hr>
+    <div class="card-columns">
+        <div class="card animated fadeIn fast" *ngFor="let product of products">
+            <img [src]="product.image" fallimg="default" class="card-img-top img-fluid" [alt]="product.name">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.detail}}</p>
+                <p class="card-text"><small class="text-muted">{{product.price | currency:'':'symbol':'4.0'}}</small></p>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <button type="button" class="btn btn-primary btn-block">
+                            <i class="fas fa-cart-plus" style="color:white"></i>
+                        </button>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="number" class="form-control" placeholder="Cantidad" min="1" pattern="^[0-9]+">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

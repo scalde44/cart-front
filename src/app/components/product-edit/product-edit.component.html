@@ -1,7 +1,50 @@
-<div class="container">
+<div class="container" *ngIf="product">
     <br>
     <br>
-    <h1>Editar producto</h1>
+    <h1 style="text-align: center;">Editar producto</h1>
     <hr>
-    <button routerLink="/product-list" class="btn btn-secondary">Cancel</button>
+    <div *ngIf="showMsg">
+        <p *ngFor="let msg of messages">
+            {{msg}}
+        </p>
+    </div>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="proId">ProId</label>
+                <input type="text" name="proId" id="proId" #proId placeholder="ProId" [(ngModel)]="product.proId" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="detail">Detail</label>
+                <input type="text" name="detail" id="detail" #detail placeholder="Detail" [(ngModel)]="product.detail" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Image">Image</label>
+                <input type="text" name="Image" id="Image" #image placeholder="Image" [(ngModel)]="product.image" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" #name placeholder="Name" [(ngModel)]="product.name" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" #price placeholder="Price" [(ngModel)]="product.price" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="enable">Enable</label>
+                <select name="enable" id="enable" #enable [(ngModel)]="product.enable" class="form-control">
+                    <option *ngFor="let enable of enables" [value]="enable.id">
+                        {{enable.name}}
+                    </option>
+                 </select>
+            </div>
+        </div>
+        <button (click)="update()" class="btn btn-primary btn-block">Update</button>
+        <button (click)="delete()" class="btn btn-danger btn-block">Delete</button>
+        <button routerLink="/product-list" class="btn btn-secondary btn-block">Ver lista</button>
+    </form>
 </div>

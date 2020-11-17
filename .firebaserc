@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cart-scg": {
+      "hosting": {
+        "cart-front": [
+          "cart-scg"
+        ]
+      }
+    }
+  }
+}

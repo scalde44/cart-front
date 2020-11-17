@@ -11,6 +11,8 @@ export class PaymentMethodListComponent implements OnInit {
 
   public titulo: string = 'Lista de metodos de pago';
   public paymentMethods: PaymentMethod[];
+  public showMsg: boolean = false;
+  public messages: string[] = [""];
   pageActual: number = 1;
 
   constructor(public paymentMethodService: PaymentMehtodService) { }
@@ -27,5 +29,18 @@ export class PaymentMethodListComponent implements OnInit {
         console.error(error);
       });
   }
-
+  public delete(payId: number): void {
+    this.messages = [];
+    this.paymentMethodService.delete(payId).subscribe(
+      ok => {
+        this.showMsg = true;
+        this.messages[0] = "El paymentMehtod se elimino con éxito";
+        this.findAll();
+      },
+      err => {
+        this.showMsg = true;
+        this.messages = err.error.error;
+      }
+    );
+  }
 }

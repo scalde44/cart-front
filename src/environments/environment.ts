@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:9090'
+  apiUrl: 'https://cart-scg.herokuapp.com',
+  firebaseConfig : {
+    apiKey: "AIzaSyBgKN-J9FQk78c39Pohv5iLKokqdbUJTFI",
+    authDomain: "cart-scg.firebaseapp.com",
+    databaseURL: "https://cart-scg.firebaseio.com",
+    projectId: "cart-scg",
+    storageBucket: "cart-scg.appspot.com",
+    messagingSenderId: "13580976610",
+    appId: "1:13580976610:web:8b1ad5c093f3645a0bb9bb"
+  },
 };
 
 /*

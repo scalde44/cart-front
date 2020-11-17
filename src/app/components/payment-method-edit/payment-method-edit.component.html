@@ -1,7 +1,34 @@
-<div class="container">
+<div class="container" *ngIf="paymentMethod">
     <br>
     <br>
-    <h1>Editar Método de pago</h1>
+    <h1 style="text-align: center;">Guardar Método de pago</h1>
     <hr>
-    <button routerLink="/paymentMethod-list" class="btn btn-secondary">Cancel</button>
+    <div *ngIf="showMsg">
+        <p *ngFor="let msg of messages">
+            {{msg}}
+        </p>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="payId">PayId</label>
+            <input type="number" readonly name="payId" id="payId" #name placeholder="payId" [(ngModel)]="paymentMethod.payId" class="form-control">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" #name placeholder="name" [(ngModel)]="paymentMethod.name" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="enable">Enable</label>
+                <select name="enable" id="enable" #enable [(ngModel)]="paymentMethod.enable" class="form-control">
+                    <option *ngFor="let enable of enables" [value]="enable.id">
+                        {{enable.name}}
+                    </option>
+                 </select>
+            </div>
+        </div>
+        <button (click)="update()" class="btn btn-primary btn-block">Update</button>
+        <button (click)="delete()" class="btn btn-danger btn-block">Delete</button>
+        <button routerLink="/paymentMethod-list" class="btn btn-secondary btn-block">Ver lista</button>
+    </form>
 </div>

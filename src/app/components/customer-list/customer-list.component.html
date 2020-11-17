@@ -1,8 +1,13 @@
 <div class="container">
     <br>
     <br>
-    <h1>{{titulo}}</h1>
+    <h1 style="text-align: center;">{{titulo}}</h1>
     <hr>
+    <div *ngIf="showMsg">
+        <p *ngFor="let msg of messages">
+            {{msg}}
+        </p>
+    </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">
@@ -12,22 +17,34 @@
                     <th scope="col">Name</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Enable</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">Compras</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let customer of customers | paginate: {itemsPerPage: 7, currentPage: pageActual}">
+                <tr *ngFor="let customer of customers | paginate: {itemsPerPage: 5, currentPage: pageActual}">
                     <td>{{customer.email}}</td>
                     <td>{{customer.address}}</td>
                     <td>{{customer.name}}</td>
                     <td>{{customer.phone}}</td>
                     <td>{{customer.enable}}</td>
+                    <td>{{customer.role}}</td>
                     <td>
-                        <a [routerLink]="['/customer-edit',customer.email]"><i class="far fa-edit"></i></a>
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <a [routerLink]="['/customer-edit',customer.email]"><i class="fas fa-pencil-alt" style="color:white"></i></a>
+                        </button>
                     </td>
                     <td>
-                        <i class="fas fa-trash-alt" style="color:red"></i>
+                        <button type="button" class="btn btn-danger btn-sm" *ngIf="userF.email!=customer.email">
+                        <a (click)="delete(customer.email)"><i class="fas fa-trash-alt" style="color:white"></i></a>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-dark btn-sm">
+                            <a [routerLink]="['/customer-compras',customer.email]"><i class="fas fa-shopping-cart" style="color:white"></i></a>
+                        </button>
                     </td>
                 </tr>
             </tbody>

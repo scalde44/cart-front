@@ -1,7 +1,7 @@
 <div class="container">
     <br>
     <br>
-    <h1>Guardar cliente</h1>
+    <h1 style="text-align: center;">Guardar cliente</h1>
     <hr>
     <div *ngIf="showMsg">
         <p *ngFor="let msg of messages">
@@ -31,8 +31,12 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="token">Token</label>
-                <input type="text" name="token" id="token" #token placeholder="Token" [(ngModel)]="customer.token" class="form-control">
+                <label for="role">Role</label>
+                <select name="role" id="role" #role [(ngModel)]="customer.role" class="form-control">
+                    <option *ngFor="let role of roles" [value]="role.id">
+                        {{role.name}}
+                    </option>
+                 </select>
             </div>
             <div class="form-group col-md-6">
                 <label for="enable">Enable</label>
@@ -43,7 +47,12 @@
                  </select>
             </div>
         </div>
-        <button (click)="save()" class="btn btn-primary md-10">Save</button>
-        <button routerLink="/customer-list" class="btn btn-secondary">Cancel</button>
+        <div class="form-group">
+            <label for="token">Token</label>
+            <input type="text" name="token" id="token" #token placeholder="Token" [(ngModel)]="customer.token" class="form-control">
+        </div>
+        <hr>
+        <button (click)="save()" class="btn btn-primary btn-block">Save</button>
+        <button routerLink="/customer-list" class="btn btn-secondary btn-block">Ver lista</button>
     </form>
 </div>

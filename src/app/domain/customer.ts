@@ -5,6 +5,7 @@ export class Customer {
         public enable: string,
         public name: string,
         public phone: string,
-        public token: string
+        public token: string,
+        public role:string
     ) { }
 }

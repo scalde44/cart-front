@@ -1,7 +1,7 @@
 <div class="container">
     <br>
     <br>
-    <h1>Guardar producto</h1>
+    <h1 style="text-align: center;">Guardar producto</h1>
     <hr>
     <div *ngIf="showMsg">
         <p *ngFor="let msg of messages">
@@ -43,7 +43,7 @@
                  </select>
             </div>
         </div>
-        <button (click)="save()" class="btn btn-primary md-10">Save</button>
-        <button routerLink="/product-list" class="btn btn-secondary">Cancel</button>
+        <button (click)="save()" class="btn btn-primary btn-block">Save</button>
+        <button routerLink="/product-list" class="btn btn-secondary btn-block">Ver lista</button>
     </form>
 </div>

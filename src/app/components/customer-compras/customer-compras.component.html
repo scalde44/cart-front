@@ -1,0 +1,30 @@
+<div class="container">
+    <br>
+    <br>
+    <h1 style="text-align: center;">Compras del cliente</h1>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">CarId</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">PayId</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let shca of shoppingCarts | paginate: {itemsPerPage: 5, currentPage: pageActual}">
+                    <td>{{shca.carId}}</td>
+                    <td>{{shca.items}}</td>
+                    <td>{{shca.total| currency:'':'symbol':'4.0'}}</td>
+                    <td>{{shca.customerEmail}}</td>
+                    <td>{{shca.paymentMethodId}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls (pageChange)="pageActual=$event"></pagination-controls>
+
+</div>

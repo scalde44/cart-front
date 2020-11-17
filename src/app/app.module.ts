@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -23,6 +25,12 @@ import { PaymentMethodEditComponent } from './components/payment-method-edit/pay
 import { PaymentMethodSaveComponent } from './components/payment-method-save/payment-method-save.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { environment } from 'src/environments/environment';
+import { RegisterComponent } from './components/register/register.component';
+import { EmailComponent } from './components/email/email.component';
+import { CustomerComprasComponent } from './components/customer-compras/customer-compras.component';
+import { HomeUserComponent } from './components/home-user/home-user.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +46,12 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     PaymentMethodEditComponent,
     PaymentMethodSaveComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    RegisterComponent,
+    EmailComponent,
+    CustomerComprasComponent,
+    HomeUserComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +59,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     HttpClientModule,
     NgxPaginationModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     NgFallimgModule.forRoot({
       default: 'assets/img/noimage.png'
     })

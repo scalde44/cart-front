@@ -6,16 +6,16 @@ import { Enable } from '../domain/enable';
 })
 export class EnableService {
 
-  public enables:Enable[];
+  public enables: Enable[];
 
-  constructor() { 
-    this.enables=[
-      {id:'Y',name:'SI'},
-      {id:'N',name:'NO'}
+  constructor() {
+    this.enables = [
+      { id: 'Y', name: 'SI' },
+      { id: 'N', name: 'NO' }
     ];
   }
 
-  public findAll():Enable[]{
+  public findAll(): Enable[] {
     return this.enables;
   }
 }
