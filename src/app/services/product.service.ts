@@ -43,4 +43,9 @@ export class ProductService {
     let headers = this.createTokenHeader();
     return this.httpClient.delete(this.url + 'delete/' + proId, { headers: headers });
   }
+
+  public findByLikeName(name: string): Observable<any> {
+    let headers = this.createTokenHeader();
+    return this.httpClient.get(this.url + 'findByLikeName/' + name, { headers: headers });
+  }
 }

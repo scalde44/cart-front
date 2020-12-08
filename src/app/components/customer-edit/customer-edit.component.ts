@@ -61,7 +61,6 @@ export class CustomerEditComponent implements OnInit {
 
   public update(): void {
     this.messages = [""];
-    this.customer.token = localStorage.getItem('token');
     this.customerService.update(this.customer).subscribe(
       ok => {
         this.showMsg = true;

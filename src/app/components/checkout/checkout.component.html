@@ -1,0 +1,100 @@
+<div class="container" *ngIf="shca">
+    <br>
+    <br>
+    <div *ngIf="shca[0].items!=0;else vacio">
+        <h1 style="text-align: center;">Checkout</h1>
+        <div *ngIf="showMsg">
+            <p *ngFor="let msg of messages">
+                {{msg}}
+            </p>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="username">Full name (on the card)</label>
+                <input type="text" name="username" id="username" [(ngModel)]="username" placeholder="Jason Doe" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Card number</label>
+                <div class="input-group">
+                    <input type="number" name="cardNumber" id="cardNumber" [(ngModel)]="cardNumber" pattern="/^-e?\d+\.?\d*$/" onKeyPress="if(this.value.length==16) return false;" (keyup)="comprobarPayId()" placeholder="XXXXXXXXXXXXXXXX" class="form-control" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text text-muted" [ngSwitch]="payId">
+                                <i *ngSwitchCase="1" style="color:#1a1f71" class="fab fa-cc-visa"></i>
+                                <i *ngSwitchCase="2" style="color:black" class="fab fa-cc-mastercard"></i>
+                                <i *ngSwitchCase="3" style="color:#1D8ECE" class="fab fa-cc-amex"></i>
+                                <i *ngSwitchCase="4" style="color:#3b7bbf" class="fab fa-cc-paypal"></i>
+                                <div *ngSwitchDefault>
+                                    <i class="fab fa-cc-visa"></i>
+                                    <i class="fab fa-cc-mastercard"></i>
+                                    <i class="fab fa-cc-amex"></i>
+                                    <i class="fab fa-cc-paypal"></i>
+                                </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label><span class="hidden-xs">Expiration Date</span></label>
+                        <div class="input-group">
+                            <select class="form-control" id="ccmonth">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                            <select class="form-control" id="ccyear">
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                                <option>24</option>
+                                <option>25</option>
+                                <option>26</option>
+                                <option>27</option>
+                                <option>28</option>
+                                <option>29</option>
+                                <option>30</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group mb-4">
+                        <label title="Three-digits code on the back of your card">CVV<i class="fa fa-question-circle"></i>
+                            </label>
+                        <input type="number" name="cvv" id="cvv" [(ngModel)]="cvv" pattern="/^-e?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" required class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span class="txt">Total: {{shca[0].total| currency:'':'symbol':'4.0'}}</span>
+                </div>
+                <div class="col">
+                    <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" [routerLink]="['/customer-cart']">View Cart</button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="subscribe btn btn-success btn-block rounded-pill shadow-sm" (click)="finalizar()">Finalizar compra</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <ng-template #vacio>
+        <div class="container" style="text-align: center;">
+            <h2>
+                Tu carrito de compras está vacío
+            </h2>
+            <button class="btn btn-primary btn-sm mt-5" [routerLink]="['/home-user']">Continue shopping</button>
+        </div>
+    </ng-template>
+</div>

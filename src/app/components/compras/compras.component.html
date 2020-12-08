@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" *ngIf="shca">
     <br>
     <br>
-    <h1 style="text-align: center;">Compras del cliente</h1>
+    <h1 style="text-align: center;">Mis compras</h1>
     <hr>
-    <div class="table-responsive" *ngIf="shoppingCarts">
+    <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -12,20 +12,21 @@
                     <th scope="col">Total</th>
                     <th scope="col">Email</th>
                     <th scope="col">PayId</th>
+                    <th scope="col" style="text-align:center;">Ver detalles</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let shca of shoppingCarts | paginate: {itemsPerPage: 5, currentPage: pageActual}">
+                <tr *ngFor="let shca of shca | paginate: {itemsPerPage: 5, currentPage: pageActual}">
                     <td>{{shca.carId}}</td>
                     <td>{{shca.items}}</td>
                     <td>{{shca.total| currency:'':'symbol':'4.0'}}</td>
                     <td>{{shca.customerEmail}}</td>
                     <td>{{shca.paymentMethodId}}</td>
+                    <td style="text-align:center;"><button class="btn btn-primary rounded-pill btn-sm" [routerLink]="['/detalles',shca.carId,shca.customerEmail]"><i class="fas fa-eye"  style="color:white"></i></button></td>
                 </tr>
             </tbody>
         </table>
-        <pagination-controls (pageChange)="pageActual=$event"></pagination-controls>
     </div>
-    <button class="btn btn-primary" style="text-align: center;" [routerLink]="[ '/customer-list']">Ver lista</button>
+    <pagination-controls (pageChange)="pageActual=$event"></pagination-controls>
 
 </div>

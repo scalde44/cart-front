@@ -19,7 +19,6 @@
                     <th scope="col">Image</th>
                     <th scope="col">Enable</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,13 +32,8 @@
                     </td>
                     <td>{{product.enable}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary btn-sm">
-                            <a [routerLink]="['/product-edit',product.proId]"><i class="fas fa-pencil-alt" style="color:white"></i></a>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-sm">
-                        <a (click)="delete(product.proId)"><i class="fas fa-trash-alt" style="color:white"></i></a>
+                        <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/product-edit',product.proId]">
+                            <a><i class="fas fa-pencil-alt" style="color:white"></i></a>
                         </button>
                     </td>
                 </tr>

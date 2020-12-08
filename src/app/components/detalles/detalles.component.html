@@ -1,0 +1,41 @@
+<div class="container" *ngIf="shpr; else vacio">
+    <br>
+    <br>
+    <h1 style="text-align: center;">Mi carrito de compras</h1>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of shpr | paginate: {itemsPerPage: 5, currentPage: pageActual}">
+                    <td><img [src]="producto.productImage" fallimg="default" class="img-thumb" width="35" height="45"></td>
+                    <td>{{producto.productName}}</td>
+                    <td>{{producto.productPrice| currency:'':'symbol':'4.0'}}</td>
+                    <td>{{producto.quantity}}</td>
+                    <td>{{producto.total| currency:'':'symbol':'4.0'}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+        <pagination-controls (pageChange)="pageActual=$event"></pagination-controls>
+        <div style="text-align: center;">
+            <button class="btn btn-sm btn-primary" [routerLink]="['/compras']">Ver mis compras</button>
+        </div>
+    </div>
+</div>
+<ng-template #vacio>
+    <div style="text-align: center;">
+        <br>
+        <br>
+        <h2>Carrito de compras sin articulos todavía</h2>
+        <button class="btn btn-sm btn-primary" [routerLink]="['/compras']">Ver mis compras</button>
+    </div>
+</ng-template>

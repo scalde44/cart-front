@@ -48,6 +48,7 @@ export class RegisterComponent implements OnInit {
       this.user.username = "admin";
       this.user.password = "password";
       this.customer.token = result.user.uid;
+      this.customer.role = "U";
       this.authService.loginUser(this.user).subscribe(
         data => {
           localStorage.setItem("tokenR", data.token);

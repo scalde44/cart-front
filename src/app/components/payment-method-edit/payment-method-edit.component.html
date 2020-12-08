@@ -1,7 +1,7 @@
 <div class="container" *ngIf="paymentMethod">
     <br>
     <br>
-    <h1 style="text-align: center;">Guardar Método de pago</h1>
+    <h1 style="text-align: center;">Editar Método de pago</h1>
     <hr>
     <div *ngIf="showMsg">
         <p *ngFor="let msg of messages">
@@ -28,7 +28,6 @@
             </div>
         </div>
         <button (click)="update()" class="btn btn-primary btn-block">Update</button>
-        <button (click)="delete()" class="btn btn-danger btn-block">Delete</button>
         <button routerLink="/paymentMethod-list" class="btn btn-secondary btn-block">Ver lista</button>
     </form>
 </div>

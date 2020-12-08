@@ -1,7 +1,7 @@
 <div class="container" *ngIf="customer">
     <br>
     <br>
-    <h1 style="text-align: center;">Editar cliente</h1>
+    <h1 style="text-align: center;">Mi Perfil</h1>
     <hr>
     <div *ngIf="showMsg">
         <p *ngFor="let msg of messages">
@@ -29,26 +29,14 @@
                 <input type="text" name="phone" id="phone" #phone placeholder="Phone" [(ngModel)]="customer.phone" class="form-control">
             </div>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="role">Role</label>
-                <select name="role" id="role" #role [(ngModel)]="customer.role" class="form-control">
-                    <option *ngFor="let role of roles" [value]="role.id">
-                        {{role.name}}
-                    </option>
-                 </select>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary btn-block" (click)="recuperar()">Recuperar Contraseña</button>
             </div>
-            <div class="form-group col-md-6">
-                <label for="enable">Enable</label>
-                <select name="enable" id="enable" #enable [(ngModel)]="customer.enable" class="form-control">
-                    <option *ngFor="let enable of enables" [value]="enable.id">
-                        {{enable.name}}
-                    </option>
-                 </select>
+            <div class="col">
+                <button class="btn btn-success btn-block" (click)="update()">Editar</button>
             </div>
         </div>
         <hr>
-        <button (click)="update()" class="btn btn-primary btn-block">Update</button>
-        <button routerLink="/customer-list" class="btn btn-secondary btn-block">Ver lista</button>
     </form>
 </div>

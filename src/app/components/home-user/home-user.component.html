@@ -3,7 +3,10 @@
     <br>
     <h1 style="text-align: center;">Productos</h1>
     <hr>
-    <div class="card-columns">
+    <div class="form-group">
+        <input type="text" name="like" id="like" placeholder="Buscar por nombre" [(ngModel)]="like" class="form-control" (keyup)="busqueda()">
+    </div>
+    <div class="card-columns" *ngIf="products;else vacio">
         <div class="card animated fadeIn fast" *ngFor="let product of products">
             <img [src]="product.image" fallimg="default" class="card-img-top img-fluid" [alt]="product.name">
             <div class="card-body">
@@ -12,16 +15,20 @@
                 <p class="card-text"><small class="text-muted">{{product.price | currency:'':'symbol':'4.0'}}</small></p>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <button type="button" class="btn btn-primary btn-block">
+                        <button type="button" class="btn btn-primary btn-block" (click)="agregarP(product.proId,product.name)">
                             <i class="fas fa-cart-plus" style="color:white"></i>
                         </button>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="number" class="form-control" placeholder="Cantidad" min="1" pattern="^[0-9]+">
+                        <input type="number" class="form-control" [(ngModel)]="cantidad" placeholder="Cantidad" min="1" pattern="^[0-9]+">
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+    <ng-template #vacio>
+        <h3 style="text-align: center;">No se encontraron productos</h3>
+    </ng-template>
+
 </div>

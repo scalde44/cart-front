@@ -13,7 +13,14 @@ export class AuthFirebaseService {
   public user: User;
   constructor(public afAuth: AngularFireAuth) { }
 
-  async sendVerificationEmail(){
+  async resetPassword(email: string): Promise<void> {
+    try {
+      return this.afAuth.sendPasswordResetEmail(email);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async sendVerificationEmail() {
     return (await this.afAuth.currentUser).sendEmailVerification();
   }
   async loginFirebase(email: string, password: string) {

@@ -31,14 +31,6 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="role">Role</label>
-                <select name="role" id="role" #role [(ngModel)]="customer.role" class="form-control">
-                    <option *ngFor="let role of roles" [value]="role.id">
-                        {{role.name}}
-                    </option>
-                 </select>
-            </div>
-            <div class="form-group col-md-6">
                 <label for="enable">Enable</label>
                 <select name="enable" id="enable" #enable [(ngModel)]="customer.enable" class="form-control">
                     <option *ngFor="let enable of enables" [value]="enable.id">
@@ -46,14 +38,17 @@
                     </option>
                  </select>
             </div>
+            <div class="form-group col-md-6">
+                <label for="token">Contraseña</label>
+                <input type="password" name="token" id="token" #token placeholder="Contraseña" [(ngModel)]="customer.token" class="form-control">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="token">Contraseña</label>
-            <input type="text" name="token" id="token" #token placeholder="Contraseña" [(ngModel)]="customer.token" class="form-control">
-        </div>
-        <hr>
-        <hr>
+        <br>
         <button (click)="registrar()" class="btn btn-primary btn-block">Registrarse</button>
-        <a routerLink='/login'>Login</a>
+        <div class="card-footer">
+            <div class="d-flex justify-content-center links">
+                Do you have an account?<a routerLink='/login'> Login</a>
+            </div>
+        </div>
     </form>
 </div>

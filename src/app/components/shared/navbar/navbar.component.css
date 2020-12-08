@@ -32,6 +32,18 @@ ul.dropdown-cart li .item {
     color: white;
 }
 
+ul.dropdown-cart .item2 {
+    display: block;
+    padding: 3px 10px;
+    margin: 3px 0;
+    color: white;
+    text-align: left;
+}
+
+ul.dropdown-cart .item2-right {
+    float: right;
+}
+
 ul.dropdown-cart li .item:hover {
     color: #000;
     background-color: #fff;
@@ -69,4 +81,14 @@ ul.dropdown-cart li .item-right {
 
 ul.dropdown-cart li .item-right button {
     margin-top: 8px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
 }

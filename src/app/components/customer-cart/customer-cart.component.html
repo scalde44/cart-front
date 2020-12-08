@@ -1,0 +1,46 @@
+<div class="container" *ngIf="shca">
+    <br>
+    <br>
+    <h1 style="text-align: center;">Mi carrito de compras</h1>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-hover" *ngIf="shpr">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"><button class="btn btn-danger btn-sm btn-block" (click)="clearCart()">Cleart All</button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of shpr | paginate: {itemsPerPage: 5, currentPage: pageActual}">
+                    <td><img [src]="producto.productImage" fallimg="default" class="img-thumb" width="35" height="45"></td>
+                    <td>{{producto.productName}}</td>
+                    <td>{{producto.productPrice| currency:'':'symbol':'4.0'}}</td>
+                    <td>{{producto.quantity}}</td>
+                    <td>{{producto.total| currency:'':'symbol':'4.0'}}</td>
+                    <td style="text-align:center;"><button class="btn btn-danger btn-sm btn-circle" (click)="deletePro(producto.productId,producto.productName,producto.quantity)"><i class="fas fa-times" style="color:white"></i></button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-primary btn-sm" [routerLink]="['/home-user']">Continue shopping</button></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-weight: bold;">Grand total:</td>
+                    <td style="font-weight: bold;">{{shca[0].total| currency:'':'symbol':'4.0'}}</td>
+                    <td style="text-align:center;"><button class="btn btn-success btn-sm" [routerLink]="['/checkout']">Proceed to Checkout</button></td>
+                </tr>
+            </tbody>
+            <pagination-controls (pageChange)="pageActual=$event"></pagination-controls>
+        </table>
+        <div class="container" style="text-align: center;" *ngIf="!shpr">
+            <h2>
+                Tu carrito de compras está vacío
+            </h2>
+            <button class="btn btn-primary btn-sm mt-5" [routerLink]="['/home-user']">Continue shopping</button>
+        </div>
+    </div>
+
+</div>

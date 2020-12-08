@@ -40,40 +40,50 @@
                     </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" [routerLink]="['/customer-edit',userF.email]" routerLinkActive="bg-secondary">Editar</a>
-                            <a class="dropdown-item" (click)="logout()">Logout</a>
+                            <a class="dropdown-item" (click)="logout()" href="#">Logout</a>
                         </div>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" *ngIf="!isAdmin()">
-                    <li class="nav-item dropdown mx-0 mx-lg-1" role="presentation">
-                        <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="fa fa-shopping-cart bigicon"></span>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" [routerLink]="['/home-user']">Productos</a>
+                    </li>
+                    <li class="nav-item dropdown mx-0 mx-lg-1" role="presentation" *ngIf="show()==true">
+                        <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="mostrarP()">
+                            <span class="fa fa-shopping-cart bigicon" *ngIf="shca">
+                                {{shca[0].items}}
+                            </span>
                         </a>
-                        <ul class="dropdown-menu dropdown-cart" role="menu">
-                            <li>
+                        <ul class="dropdown-menu dropdown-cart" role="menu" *ngIf="shca">
+                            <li *ngFor="let sp of shpr; let i=index">
                                 <span class="item">
                                   <span class="item-left">
-                                      <img src="http://www.prepbootstrap.com/Content/images/template/menucartdropdown/item_1.jpg" alt="" />
+                                      <img [src]="sp.productImage" fallimg="default" width="30" height="40" />
                                       <span class="item-info">
-                                          <span>Item name</span>
-                                <span>price: 27$</span>
+                                          <span>{{sp.productName}}</span>
+                                <span>{{sp.quantity}} x {{sp.productPrice| currency:'':'symbol':'4.0'}}</span>
                                 </span>
                                 </span>
                                 <span class="item-right">
-                                      <button class="btn btn-danger btn-sm"><i class="fas fa-times" style="color:white"></i></button>
+                                      <button class="btn btn-danger btn-sm btn-circle" (click)="deletePro(sp.productId)"><i class="fas fa-times" style="color:white"></i></button>
                                   </span>
                                 </span>
                             </li>
+                            <span class="item2">Total:
+                                <span class="item2-right" *ngIf="shca">
+                                    {{shca[0].total| currency:'':'symbol':'4.0'}}
+                                </span>
+                            </span>
                             <li class="divider"></li>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <button class="btn btn-primary btn-sm btn-block">View cart</button>
+                                    <button class="btn btn-primary btn-sm btn-block" [routerLink]="['/customer-cart']">View cart</button>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <button class="btn btn-danger btn-sm btn-block">Cleart cart</button>
+                                    <button class="btn btn-danger btn-sm btn-block" (click)="clearCart()">Cleart cart</button>
                                 </div>
                             </div>
-                            <button class="btn btn-success btn-sm btn-block">Checkout</button>
+                            <button class="btn btn-success btn-sm btn-block" [routerLink]="['/checkout']">Checkout</button>
                         </ul>
                     </li>
                     <li class="nav-item dropdown mx-0 mx-lg-1" role="presentation" routerLinkActive="active">
@@ -81,8 +91,9 @@
                       Mi perfil
                     </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" routerLinkActive="bg-secondary">{{userF?.email}}</a>
-                            <a class="dropdown-item" (click)="logout()">Logout</a>
+                            <a class="dropdown-item" routerLinkActive="bg-secondary" [routerLink]="['/editar']">Editar</a>
+                            <a class="dropdown-item" routerLinkActive="bg-secondary" [routerLink]="['/compras']">Mis Compras</a>
+                            <a class="dropdown-item" (click)="logout()" href="#">Logout</a>
                         </div>
                     </li>
                 </ul>

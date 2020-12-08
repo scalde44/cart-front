@@ -31,6 +31,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { EmailComponent } from './components/email/email.component';
 import { CustomerComprasComponent } from './components/customer-compras/customer-compras.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
+import { CustomerCartComponent } from './components/customer-cart/customer-cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ComprasComponent } from './components/compras/compras.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
+import { EditarComponent } from './components/editar/editar.component';
+import { PasswordComponent } from './components/password/password.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +57,13 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
     RegisterComponent,
     EmailComponent,
     CustomerComprasComponent,
-    HomeUserComponent
+    HomeUserComponent,
+    CustomerCartComponent,
+    CheckoutComponent,
+    ComprasComponent,
+    DetallesComponent,
+    EditarComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,
